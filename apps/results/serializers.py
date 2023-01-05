@@ -49,6 +49,10 @@ class StudentMarksSerializer(serializers.ModelSerializer):
         fields = ('student_subjects','marks')
 
 
+#this is to the nest_testing branch
+
+
+
 class ResultListSerializer(serializers.ModelSerializer):
     # student_name = StudentNameSerializer(many=True)
     student_details = StudentNameSerializer(read_only=True)
