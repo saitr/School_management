@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from apps.student_classes.models import StudentClass
-from apps.results.models import DeclareResult
+# from apps.results.models import DeclareResult
 # Create your models here.
 
 class Subject(models.Model):
@@ -11,7 +11,7 @@ class Subject(models.Model):
     subject_code = models.IntegerField(unique=True, primary_key=True)
     subject_creation_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     subject_update_date = models.DateTimeField(auto_now=True, auto_now_add=False)
-    results = models.ForeignKey(DeclareResult,related_name='related_sub',on_delete=models.CASCADE)
+    # results = models.ForeignKey(DeclareResult,related_name='related_sub',on_delete=models.CASCADE)
 
     
 

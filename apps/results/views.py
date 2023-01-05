@@ -12,6 +12,6 @@ class addResult(generics.ListCreateAPIView):
     serializer_class = resultAddSerializer
 
 
-class ResultList(generics.ListAPIView):
+class ResultList(generics.ListCreateAPIView):
     queryset = DeclareResult.objects.all()
     serializer_class = ResultListSerializer

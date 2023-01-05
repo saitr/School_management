@@ -7,9 +7,9 @@ class MarksSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeclareResult
         fields = ('marks')
-class SubjectSerializer(serializers.ModelSerializer):
-    # marks = MarksSerializer(read_only=True,source='results_marks',many=True)
-    class Meta:
-        model = Subject
-        fields = ('subject_name','subject_code','results')
-        depth=1
+# class SubjectSerializer(serializers.ModelSerializer):
+#     # marks = MarksSerializer(read_only=True,source='results_marks',many=True)
+#     class Meta:
+#         model = Subject
+#         fields = ('subject_name','subject_code','results')
+        # depth=1

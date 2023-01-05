@@ -15,7 +15,3 @@ class StudentListSerializer(serializers.ModelSerializer):
 
 
 
-class StudentNameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Student
-        fields = ['firstname','student_roll']

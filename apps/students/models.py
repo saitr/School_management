@@ -1,8 +1,8 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from apps.student_classes.models import StudentClass
-from apps.results.models import DeclareResult
-
+# from apps.results.models import DeclareResult
+from apps.subjects.models import Subject
 
 # Create your models here.
 title = (
@@ -20,7 +20,7 @@ gender = (
 class Student(models.Model):
     class Meta:
         db_table = 'Students'
-    student_roll = models.IntegerField(unique=True, primary_key=True)
+    student_roll = models.IntegerField(unique=True,blank=False,null=False)
     title = models.CharField('title', max_length=20, choices=title)
     firstname = models.CharField('First Name',max_length=100,  db_index=True, blank=False, null = False )
     lastname = models.CharField('Last Name',max_length=100,  db_index=True, blank=False, null = False )
@@ -35,7 +35,7 @@ class Student(models.Model):
     created_at = models.DateTimeField('CreatedAt', blank = False,auto_now_add=True)
     updated_at = models.DateTimeField('UpdatedAt',auto_now=True)
     student_class = models.ForeignKey(StudentClass, on_delete=models.CASCADE)
-    result = models.ForeignKey(DeclareResult,related_name='related_results',on_delete= models.CASCADE)
+    # result = models.ForeignKey(DeclareResult,related_name='related_results',on_delete= models.CASCADE)
     def __str__(self):
         return self.firstname
 
@@ -43,3 +43,8 @@ class Student(models.Model):
     @property
     def student_details(self):
         self.related_student.all()
+
+
+# class StudentMarks(models.Model):
+#     marks = models.IntegerField('Marks', db_index=True, blank=True, null=True)
+#     subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
