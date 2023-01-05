@@ -52,7 +52,7 @@ class StudentMarksSerializer(serializers.ModelSerializer):
 class ResultListSerializer(serializers.ModelSerializer):
     # student_name = StudentNameSerializer(many=True)
     student_details = StudentNameSerializer(read_only=True)
-    student_marks = StudentMarksSerializer(read_only=True)
+    student_marks = StudentMarksSerializer(read_only=True,many=True)
     student_class = StudentClassSerializer(read_only=True)
     # student_results = SubjectSerializer()
     # student_class = StudentClassSerializer(read_only=True)

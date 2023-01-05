@@ -16,7 +16,12 @@ class DeclareResult(models.Model):
         db_table = 'Results'
     student_details = models.ForeignKey(Student,blank=True,null=True, on_delete=models.CASCADE,default=None)
     student_class = models.ForeignKey(StudentClass, blank=True,null=True, on_delete=models.CASCADE,)
-    student_marks = models.ForeignKey(StudentMarks, blank=True,null=True, on_delete=models.CASCADE)
+    student_marks = models.ForeignKey(StudentMarks,blank=True,null=True, on_delete=models.CASCADE)
+
+
+    @property
+    def student_marks(self):
+        return self.student_marks_details.all()
     # marks = models.OneToOneField(StudentMarks,unique=True, on_delete=models.DO_NOTHING,default=None)
     # marks = models.IntegerField('marks', null=True)
     # def __str__(self):
