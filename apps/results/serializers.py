@@ -31,16 +31,20 @@ class SubjectSerializer(serializers.ModelSerializer):
         model = Subject
         fields = ('subject_name',)
 
-# class MarksSerializer(serializers.ModelSerializer):
-#     # subject_details = SubjectSerializer()
-#     class Meta:
-#         model = StudentMarks
-#         fields = ('subject','marks')
+
+
+
 class StudentClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentClass
         fields = ('class_name', 'section')
         
+
+# class StudentMarksSerializer(serializers.ModelSerializer):
+#     student_subjects = SubjectSerializer(read_only=True)
+#     class Meta:
+#         model = StudentMarks
+#         fields = ('student_subjects','marks')
 
 class StudentMarksSerializer(serializers.ModelSerializer):
     student_subjects = SubjectSerializer(read_only=True)
@@ -48,18 +52,17 @@ class StudentMarksSerializer(serializers.ModelSerializer):
         model = StudentMarks
         fields = ('student_subjects','marks')
 
-
 class ResultListSerializer(serializers.ModelSerializer):
     # student_name = StudentNameSerializer(many=True)
     student_details = StudentNameSerializer(read_only=True)
-    student_marks = StudentMarksSerializer(read_only=True,many=True)
+    student_marks_details = StudentMarksSerializer(read_only=True,many=True,source='student_marks')
     student_class = StudentClassSerializer(read_only=True)
     # student_results = SubjectSerializer()
     # student_class = StudentClassSerializer(read_only=True)
     # marks = MarksSerializer()
     class Meta:
         model = DeclareResult
-        fields = ['student_details','student_class','student_marks']
+        fields = ('student_details','student_class','student_marks_details',)
         # fields = ('student_details','student_class','student_marks')
         # depth=1
         # fields =('select_class',"select_student","student_marks")
